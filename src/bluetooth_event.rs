@@ -27,7 +27,9 @@ pub enum BluetoothEvent {
         object_path: String,
         rssi: i16,
     },
-    None,
+    None {
+        object_path: String,
+    },
 }
 
 impl BluetoothEvent {
@@ -107,7 +109,9 @@ impl BluetoothEvent {
                     }
                 }
 
-                Some(BluetoothEvent::None)
+                Some(BluetoothEvent::None {
+                    object_path: object_path.clone(),
+                })
             }
             Err(_err) => None,
         }
